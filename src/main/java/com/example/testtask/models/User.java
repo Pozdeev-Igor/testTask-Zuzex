@@ -1,15 +1,20 @@
 package com.example.testtask.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private int age;
+    @Column(length = 500)
     private String password;
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -36,11 +41,12 @@ public class User {
         this.age = age;
     }
 
-//    public String getPassword() {
-//        return password;
-//    }
+    public String getPassword() {
+        return password;
+    }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

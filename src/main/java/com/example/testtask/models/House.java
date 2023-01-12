@@ -1,14 +1,20 @@
 package com.example.testtask.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
+@Table(name = "houses")
 public class House {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String address;
     private Long ownersId;
+
+    @OneToMany(targetEntity = User.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<User> users;
 
     public Long getId() {
         return id;
@@ -32,5 +38,13 @@ public class House {
 
     public void setOwnersId(User user) {
         this.ownersId = user.getId();
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
