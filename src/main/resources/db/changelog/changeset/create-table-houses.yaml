@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-houses
+      author: Igor
+      changes:
+        - createTable:
+            tableName: houses
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: owners_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: user_house_FK
