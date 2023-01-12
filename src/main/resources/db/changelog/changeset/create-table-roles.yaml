@@ -22,4 +22,4 @@ databaseChangeLog:
                   name: users_id
                   type: bigint
                   constraints:
-                    foreignKeyName: user_role_FK
+                    foreignKeyName: user_roles_FK
