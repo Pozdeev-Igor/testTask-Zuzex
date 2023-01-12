@@ -19,3 +19,6 @@ replay_pid*
 
 *.idea
 *.iml
+/target
+.mvn
+*.md
