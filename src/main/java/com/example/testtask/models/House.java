@@ -1,7 +1,6 @@
 package com.example.testtask.models;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity

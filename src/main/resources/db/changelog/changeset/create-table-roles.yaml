@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-roles
+      author: Igor
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: role_name
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: users_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: user_role_FK

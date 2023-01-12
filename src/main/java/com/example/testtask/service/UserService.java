@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private UsersRepo usersRepo;
-    private CustomPasswordEncoder passwordEncoder;
+    private final UsersRepo usersRepo;
+    private final CustomPasswordEncoder passwordEncoder;
 
     public UserService(UsersRepo usersRepo, CustomPasswordEncoder passwordEncoder) {
         this.usersRepo = usersRepo;
