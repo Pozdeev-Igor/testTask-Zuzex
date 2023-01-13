@@ -1,7 +1,7 @@
-package com.example.testtask.config;
+package com.example.testtask.components.config;
 
-import com.example.testtask.utils.CustomPasswordEncoder;
-import com.example.testtask.utils.JwtFilter;
+import com.example.testtask.components.utils.CustomPasswordEncoder;
+import com.example.testtask.components.utils.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -16,9 +16,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.servlet.http.HttpServletResponse;
 
+
+/**
+ * Этот класс я не писал, забрал его из моего домашнего проекта
+ */
 @Configuration
 @EnableWebSecurity
-public class securityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomPasswordEncoder customPasswordEncoder;
 
     private final UserDetailsService userDetailsService;
@@ -29,7 +33,7 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
         return super.userDetailsService();
     }
 
-    public securityConfig(CustomPasswordEncoder customPasswordEncoder, @Lazy UserDetailsService userDetailsService, JwtFilter jwtFilter) {
+    public SecurityConfig(CustomPasswordEncoder customPasswordEncoder, @Lazy UserDetailsService userDetailsService, JwtFilter jwtFilter) {
         this.customPasswordEncoder = customPasswordEncoder;
         this.userDetailsService = userDetailsService;
         this.jwtFilter = jwtFilter;
@@ -48,7 +52,9 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http = http.csrf().disable().cors().disable();
+        http = http.csrf().disable()
+                        .cors().disable()
+        ;
         http = http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and();
@@ -60,7 +66,7 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
                 }).and();
 
         http.authorizeRequests()
-//                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated();
 

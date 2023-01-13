@@ -1,6 +1,6 @@
-package com.example.testtask.repos;
+package com.example.testtask.components.repos;
 
-import com.example.testtask.models.User;
+import com.example.testtask.components.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

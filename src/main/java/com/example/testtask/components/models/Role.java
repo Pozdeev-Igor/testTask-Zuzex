@@ -1,6 +1,6 @@
-package com.example.testtask.models;
+package com.example.testtask.components.models;
 
-import com.example.testtask.enums.ERole;
+import com.example.testtask.components.enums.ERole;
 
 import javax.persistence.*;
 

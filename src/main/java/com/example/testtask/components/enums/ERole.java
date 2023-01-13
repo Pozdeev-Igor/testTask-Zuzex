@@ -1,4 +1,4 @@
-package com.example.testtask.enums;
+package com.example.testtask.components.enums;
 
 public enum ERole {
     ROLE_OWNER("Владелец"),

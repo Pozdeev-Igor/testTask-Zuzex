@@ -1,4 +1,4 @@
-package com.example.testtask.utils;
+package com.example.testtask.components.utils;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.io.Serializable;
 import io.jsonwebtoken.Claims;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Date;
@@ -13,6 +14,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+
+
+/**
+ * Очевидно что и этот класс я тоже не писал сам.
+ */
 
 public class JwtUtil implements Serializable {
     private static final long serialVersionUID = -2550185165626007488L;
@@ -52,7 +59,7 @@ public class JwtUtil implements Serializable {
         Map<String, Object> claims = new HashMap<>();
         claims.put("authorities", userDetails.getAuthorities()
                 .stream()
-                .map(auth -> auth.getAuthority())
+                .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList()));
         return doGenerateToken(claims, userDetails.getUsername());
     }

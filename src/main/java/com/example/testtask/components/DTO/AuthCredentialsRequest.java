@@ -1,4 +1,4 @@
-package com.example.testtask.DTO;
+package com.example.testtask.components.DTO;
 
 public class AuthCredentialsRequest {
     private String username;

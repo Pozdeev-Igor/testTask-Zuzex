@@ -1,6 +1,6 @@
-package com.example.testtask.utils;
+package com.example.testtask.components.utils;
 
-import com.example.testtask.repos.UsersRepo;
+import com.example.testtask.components.repos.UsersRepo;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,10 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+
+/**
+ * Этот класс я тоже сам не писал, он так же из моего проекта,
+ * я его когда-то нашел в интернетах
+ */
+
 public class JwtFilter  extends OncePerRequestFilter {
 
-    private UsersRepo usersRepo;
-    private JwtUtil jwtUtil;
+    private final UsersRepo usersRepo;
+    private final JwtUtil jwtUtil;
 
     public JwtFilter(UsersRepo usersRepo, JwtUtil jwtUtil) {
         this.usersRepo = usersRepo;

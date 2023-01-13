@@ -1,10 +1,10 @@
-package com.example.testtask.service;
+package com.example.testtask.components.service;
 
-import com.example.testtask.DTO.UserDTO;
-import com.example.testtask.models.User;
-import com.example.testtask.repos.UsersRepo;
-import com.example.testtask.utils.CustomPasswordEncoder;
-import org.springframework.http.ResponseEntity;
+import com.example.testtask.components.DTO.UserDTO;
+import com.example.testtask.components.models.User;
+import com.example.testtask.components.repos.UsersRepo;
+import com.example.testtask.components.utils.CustomPasswordEncoder;
+import com.example.testtask.components.utils.JwtUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,9 +34,9 @@ public class UserService {
         }
     }
 
-    public void updateUser(UserDTO userDTO, Long id) {
-        if (usersRepo.findById(id).isPresent()) {
-            User userFromDB = usersRepo.getById(id);
+    public void updateUser(UserDTO userDTO, User user) {
+        if (usersRepo.findById(userDTO.getId()).isPresent() && userDTO.getId() == user.getId()) {
+            User userFromDB = usersRepo.getById(userDTO.getId());
             userFromDB.setAge(userDTO.getAge());
             userFromDB.setName(userDTO.getName());
             usersRepo.save(userFromDB);

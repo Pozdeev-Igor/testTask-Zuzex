@@ -1,4 +1,4 @@
-package com.example.testtask.utils;
+package com.example.testtask.components.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;

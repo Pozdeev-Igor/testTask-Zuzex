@@ -1,11 +1,11 @@
-package com.example.testtask.controller;
+package com.example.testtask.components.controller;
 
-import com.example.testtask.DTO.AuthCredentialsRequest;
-import com.example.testtask.DTO.UserDTO;
-import com.example.testtask.models.User;
-import com.example.testtask.repos.UsersRepo;
-import com.example.testtask.service.UserService;
-import com.example.testtask.utils.JwtUtil;
+import com.example.testtask.components.DTO.AuthCredentialsRequest;
+import com.example.testtask.components.DTO.UserDTO;
+import com.example.testtask.components.repos.UsersRepo;
+import com.example.testtask.components.models.User;
+import com.example.testtask.components.service.UserService;
+import com.example.testtask.components.utils.JwtUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+
+
+/**
+ * Этот класс я не писал, забрал его из моего домашнего проекта.
+ */
+
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -52,15 +59,15 @@ public class AuthController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthCredentialsRequest request) {
         try {
             Authentication authenticate = authenticationManager
-                    .authenticate(
-                            new UsernamePasswordAuthenticationToken(
-                                    request.getUsername(), request.getPassword()
-                            )
-                    );
+            .authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                    request.getUsername(), request.getPassword()
+                    )
+            );
 
             UserDetails user = (UserDetails) authenticate.getPrincipal();
 
